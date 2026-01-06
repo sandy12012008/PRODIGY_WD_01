@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Landing Page</title>
+
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      height: 2000px; /* just to enable scrolling */
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 30px;
+      background-color: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    nav.scrolled {
+      background-color: #1e3a8a;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    nav h1 {
+      color: white;
+    }
+
+    /* MENU */
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    ul li a {
+      text-decoration: none;
+      color: white;
+      padding: 8px 12px;
+      transition: 0.3s;
+    }
+
+    /* HOVER EFFECT */
+    ul li a:hover {
+      background-color: white;
+      color: #1e3a8a;
+      border-radius: 5px;
+    }
+
+    /* SECTIONS */
+    section {
+      height: 100vh;
+      padding-top: 100px;
+      text-align: center;
+      font-size: 32px;
+    }
+
+    .home { background: #6366f1; color: white; }
+    .about { background: #22c55e; color: white; }
+    .services { background: #f97316; color: white; }
+    .contact { background: #ec4899; color: white; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      ul {
+        flex-direction: column;
+        background: #1e3a8a;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        display: none;
+      }
+
+      ul.show {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <h1>MySite</h1>
+    <ul id="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- SECTIONS -->
+  <section id="home" class="home">Home Section</section>
+  <section id="about" class="about">About Section</section>
+  <section id="services" class="services">Services Section</section>
+  <section id="contact" class="contact">Contact Section</section>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+  </script>
+
+</body>
+</html>
